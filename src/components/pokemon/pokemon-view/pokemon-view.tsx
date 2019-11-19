@@ -4,21 +4,13 @@ import 'antd/lib/typography/style/css';
 const { Text } = Typography;
 
 import styles from './pokemon-view.scss';
-import { PokemonType } from '@/api/interfaces';
+import { IPokemon } from '@/api/interfaces';
 import { Panel, Header, Content, Footer } from '@/components/panel';
 import { Tags } from '@/components/tags';
 
-export interface IPokemonViewProps {
-  id: number;
-  name: string;
-  base_experience: number;
-  height: number;
-  weight: number;
-  image: string;
-  types: PokemonType[];
-}
 
-export const PokemonView: FunctionComponent<IPokemonViewProps> = (
+
+export const PokemonView: FunctionComponent<IPokemon> = (
   {
     name,
     base_experience,

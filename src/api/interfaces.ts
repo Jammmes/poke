@@ -8,7 +8,7 @@ export interface IPokemonType {
   type: INamedAPIResource;
 }
 
-export interface IPokemon {
+export interface IPokemonAPI {
   id: number;
   name: string;
   base_experience: number;
@@ -26,6 +26,16 @@ export interface IPokemon {
   species: INamedAPIResource;
   stats: any[];
   types: IPokemonType[];
+}
+
+export interface IPokemon {
+  id: number;
+  name: string;
+  base_experience: number;
+  height: number;
+  weight: number;
+  image: string;
+  types: PokemonType[];
 }
 
 export type PokemonType =
