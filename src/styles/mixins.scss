@@ -1,1 +1,7 @@
+@import './gutters.scss';
 
+@mixin overflow-elipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

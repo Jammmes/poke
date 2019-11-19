@@ -14,9 +14,9 @@ export const mockPokemons =
       {
         id: 2,
         name: 'anatoliy-iceman-vasserman-deltaplan',
-        base_experience: 30,
-        height: 150,
-        weight: 70,
+        base_experience: 30000,
+        height: 150000,
+        weight: 700000,
         image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png',
         types: ['ice'],
       },
