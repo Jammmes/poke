@@ -5,12 +5,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+
 }
 
 .list {
 display: flex;
 flex-wrap: wrap;
 justify-content: space-around;
+background-color: $element-color;
+
 }
 
 .summary{
