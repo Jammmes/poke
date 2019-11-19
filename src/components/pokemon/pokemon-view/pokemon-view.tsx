@@ -1,7 +1,12 @@
 import React, { FunctionComponent } from 'react';
+import { Card, Tag, Statistic  } from 'antd';
+import 'antd/lib/card/style/css';
+import 'antd/lib/tag/style/css';
+import 'antd/lib/statistic/style/css';
 
 import styles from './pokemon-view.scss';
 import { PokemonType } from '@/api/interfaces';
+import { Panel, Header, Content, Footer } from '@/components/panel';
 
 export interface IPokemonViewProps {
   id: number;
@@ -15,7 +20,6 @@ export interface IPokemonViewProps {
 
 export const PokemonView: FunctionComponent<IPokemonViewProps> = (
   {
-    id,
     name,
     base_experience,
     height,
@@ -25,14 +29,23 @@ export const PokemonView: FunctionComponent<IPokemonViewProps> = (
   },
 ) => {
   return (
-    <div className={styles.root}>
-      <div>{id}</div>
-      <div>{name}</div>
-      <div>{base_experience}</div>
-      <div>{height}</div>
-      <div>{weight}</div>
-      <img src={image} alt='...'/>
-      <div>{types}</div>
-    </div>
+      <Panel className={styles.root}>
+        <Header>
+          {name}
+        </Header>
+        <Content className={styles.content}>
+        <img  className={styles.image} src={image} alt='...'/>
+          <div className={styles.info}>
+          <Statistic title='Expirience' value ={base_experience} />
+          <Statistic title='height' value ={height} />
+          <Statistic title='weight' value ={weight} />
+          </div>
+        </Content>
+        <Footer>
+        <div className ={styles.tags}>
+            {types.map(tag => <Tag key={tag}>{tag}</Tag>)}
+          </div>
+        </Footer>
+      </Panel>
   );
 };
