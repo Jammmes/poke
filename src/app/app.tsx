@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import '@/styles/global.scss';
 import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
+import { PokemonList } from '@/components/pokemon-list';
 
 class App extends React.Component<{}> {
   public render() {
@@ -14,7 +15,7 @@ class App extends React.Component<{}> {
           <AppHeader />
         </Header>
         <Content>
-          Content -
+          <PokemonList/>
         </Content>
         <Footer>
           <AppFooter />
