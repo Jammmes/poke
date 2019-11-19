@@ -1,10 +1,27 @@
 @import '../../styles.scss';
 
 .root{
-  background: $footer-back-color;
-  color: $footer-text-color;
-  height: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: $gutter-8;
+}
+
+.footer{
+  height: 20px;
+  background: $footer-back-color;
+  color: $footer-text-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
