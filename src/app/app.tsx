@@ -15,7 +15,7 @@ class App extends React.Component<{}> {
         </Header>
         <Content>
           Content -
-          </Content>
+        </Content>
         <Footer>
           <AppFooter />
         </Footer>
