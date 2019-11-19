@@ -4,6 +4,10 @@
   width: 250px;
 }
 
+.title{
+  @include overflow-elipsis;
+}
+
 .content{
   display: flex;
   justify-content: center;
@@ -14,6 +18,7 @@
 .info{
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .image {
@@ -22,6 +27,7 @@
   border-radius: 8px;
   height: 100px;
   width: 100px;
+  margin-bottom: 10px;
 }
 
 .tags{

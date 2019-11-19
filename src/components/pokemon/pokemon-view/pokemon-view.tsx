@@ -30,7 +30,7 @@ export const PokemonView: FunctionComponent<IPokemonViewProps> = (
 ) => {
   return (
       <Panel className={styles.root}>
-        <Header>
+        <Header className={styles.title}>
           {name}
         </Header>
         <Content className={styles.content}>
