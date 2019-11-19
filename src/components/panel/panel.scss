@@ -1,0 +1,11 @@
+@import '../../styles.scss';
+
+.root{
+  border-radius: 8px;
+  border: 1px solid  $element-color;
+  box-shadow: 0 1px 3px 0 $element-color;
+  min-height: 48px;
+  padding: $gutter-8;
+  display: flex;
+  align-items: center;
+}
