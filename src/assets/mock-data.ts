@@ -9,11 +9,11 @@ export const mockPokemons =
         height: 50,
         weight: 40,
         image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png',
-        types: ['normal', 'fighting'],
+        types: ['normal', 'fighting', 'electric', 'psycho', 'poison', 'ground'],
       },
       {
         id: 2,
-        name: 'iceman',
+        name: 'anatoliy-iceman-vasserman-deltaplan',
         base_experience: 30,
         height: 150,
         weight: 70,
