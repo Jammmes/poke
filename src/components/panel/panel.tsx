@@ -1,14 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
 import cn from 'classnames';
 
 import styles from './panel.scss';
+import { IPanelSection } from './types';
 
-export interface IPanel {
+export interface IPanelProps {
+  children: ReactElement<IPanelSection> | Array<ReactElement<IPanelSection>> | ReactNode;
   className?: string;
 }
 
-export const Panel: FunctionComponent<IPanel> = ({ children, className = '' }) => {
+export const Panel: FunctionComponent<IPanelProps> = ({ className = '', children }:IPanelProps) => {
   return (
-    <div className={cn(styles.root, className)}>{children}</div>
+    <section className={cn(styles.root, className)}>{children}</section>
   );
 };
