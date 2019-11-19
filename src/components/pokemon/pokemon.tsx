@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react';
 
 import styles from './pokemon.scss';
 
-import { PokemonView } from './pokemon-view/pokemon-view';
+import { PokemonView, IPokemonViewProps } from './pokemon-view/pokemon-view';
 
-export const Pokemon: FunctionComponent<{}> = () => {
+export const Pokemon: FunctionComponent<IPokemonViewProps> = (props) => {
   return (
     <div className={styles.root}>
-      <PokemonView />
+      <PokemonView {...props}/>
     </div>
   );
 }
