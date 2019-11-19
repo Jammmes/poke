@@ -3,7 +3,7 @@ import { Pagination } from 'antd';
 import 'antd/lib/pagination/style/css';
 
 import styles from './app-footer.scss';
-import { Panel } from '../panel';
+import { Panel, Content } from '../panel';
 
 export const AppFooter: FunctionComponent<{}> = () => {
 
@@ -15,12 +15,14 @@ export const AppFooter: FunctionComponent<{}> = () => {
   <footer className={styles.root}>
     <div className={styles.header}>
     <Panel>
+      <Content fullwidth>
       <Pagination
         showSizeChanger
         onShowSizeChange={handleOnShowSizeChange}
         defaultCurrent={3}
         total={500}
       />
+      </Content>
     </Panel>
     </div>
     <div className={styles.footer}>pokemon list 2019</div>
