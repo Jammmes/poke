@@ -3,12 +3,14 @@ import { Header, Content, Footer, Layout } from '@/components/layout';
 import { hot } from 'react-hot-loader';
 
 import '@/styles/global.scss';
+
 import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { PokemonList } from '@/components/pokemon-list';
 
 export interface IApp {
   SearchFilterStore?: any;
+  PokemonStore?: any;
 }
 class App extends Component<IApp> {
   public render() {
@@ -18,7 +20,7 @@ class App extends Component<IApp> {
           <AppHeader />
         </Header>
         <Content>
-          <PokemonList/>
+          <PokemonList />
         </Content>
         <Footer>
           <AppFooter />

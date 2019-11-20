@@ -1,27 +1,17 @@
-import { observable, computed, autorun, action } from 'mobx';
+import { observable, action } from 'mobx';
 
 export class SearchFilterStore {
-  @observable public filter:string = 'abv';
-
-  constructor() {
-    // autorun(() => console.log(this.getSearchFilter()));
-  }
+  @observable public filter: string = 'ccc';
 
   @action public clearSearchFilter() {
     this.filter = '';
   }
 
-  @action public changeSearchFilter(filter:string) {
-    this.filter = filter;
+  @action public changeSearchFilter(newFilter: string) {
+    this.filter = newFilter;
   }
 
-  public getSearchFilter() {
+  @action public getSearchFilter() {
     return this.filter;
   }
-
-  // @computed public getSearchFilter() {
-  //   return this.filter;
-  // }
 }
-
-// export const observableSearchFilterStore = new ObservableSearchFilterStore();
