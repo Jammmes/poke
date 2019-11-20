@@ -9,7 +9,7 @@ export const PokemonList: FunctionComponent<{}> = () => {
 
   return (
     <div className={styles.root}>
-      <PokemonListView {...mockPokemons}/>
+      <PokemonListView pokemons={mockPokemons} />
     </div>
   );
 };
