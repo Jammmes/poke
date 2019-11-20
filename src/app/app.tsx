@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Header, Content, Footer, Layout } from '@/components/layout';
 import { hot } from 'react-hot-loader';
 
@@ -7,7 +7,10 @@ import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { PokemonList } from '@/components/pokemon-list';
 
-class App extends React.Component<{}> {
+export interface IApp {
+  SearchFilterStore?: any;
+}
+class App extends Component<IApp> {
   public render() {
     return (
       <Layout>
