@@ -2,9 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import styles from './pokemon.scss';
 
-import { PokemonView, IPokemonViewProps } from './pokemon-view/pokemon-view';
+import { PokemonView } from './pokemon-view/pokemon-view';
+import { IPokemon } from '@/api/interfaces';
 
-export const Pokemon: FunctionComponent<IPokemonViewProps> = (props) => {
+export const Pokemon: FunctionComponent<IPokemon> = (props) => {
   return (
     <div className={styles.root}>
       <PokemonView {...props}/>
