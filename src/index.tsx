@@ -8,6 +8,7 @@ import App from './app/app';
 import { SearchFilterStore } from '@/stores/searchFilterstore';
 import { PokemonStore } from '@/stores/pokemonStore';
 import { PaginationStore } from './stores/paginationStore';
+import { TagsFilterStore } from './stores/tagsFilterStore';
 
 const config = {
   predicate: () => true,
@@ -23,6 +24,7 @@ const stores = {
   searchStore: new SearchFilterStore(),
   pokemonStore: new PokemonStore(),
   paginationStore: new PaginationStore(),
+  tagsFilterStore: new TagsFilterStore(),
 };
 
 render(
