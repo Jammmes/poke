@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 
 export class SearchFilterStore {
-  @observable public filter: string = 'ccc';
+  @observable public filter: string = '';
 
   @action public clearSearchFilter() {
     this.filter = '';

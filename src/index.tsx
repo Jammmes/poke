@@ -13,7 +13,7 @@ const config = {
   action: true,
   reaction: true,
   transaction: true,
-  compute: true
+  compute: true,
 };
 
 enableLogging(config);

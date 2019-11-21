@@ -1,5 +1,5 @@
-import { observable, action, computed } from 'mobx';
-import { IPokemon } from '../api/interfaces';
+import { observable, action, computed, values } from 'mobx';
+import { IPokemon, PokemonType } from '../api/interfaces';
 import uniq from 'lodash/uniq';
 
 export interface IpokemonStore {
@@ -8,9 +8,6 @@ export interface IpokemonStore {
 }
 
 export class PokemonStore {
-  // @observable public pokemons: IPokemon[];
-  // @observable public isPending: boolean;
-
   @observable public store: IpokemonStore;
 
   constructor() {
@@ -29,16 +26,16 @@ export class PokemonStore {
   }
 
   @action public getAllPokemons() {
-    return this.store.pokemons;
+    return this.store.pokemons.map(pokemon => values(pokemon));
   }
 
-  // @action public getPokemonsByTag(tag: PokemonType) {
-  //   return this.pokemons.filter(pokemon => pokemon.types.filter(type => type === tag));
-  // }
+  @action public getPokemonsByTag(tag: PokemonType) {
+    return this.store.pokemons.filter(pokemon => pokemon.types.filter(type => type === tag));
+  }
 
-  // @action public getPokemonsByName(tag: PokemonType) {
-  //   return this.pokemons.filter(pokemon => pokemon.name === name);
-  // }
+  @action public getPokemonsByName(name: string) {
+    return this.store.pokemons.filter(pokemon => pokemon.name === name);
+  }
 
   @action public getUniqTags() {
     const unpreparedTypes = this.store.pokemons.map(pokemon => pokemon.types);
