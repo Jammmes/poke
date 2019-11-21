@@ -9,8 +9,8 @@ import { AppHeader } from '@/components/app-header';
 import { PokemonList } from '@/components/pokemon-list';
 
 export interface IApp {
-  SearchFilterStore?: any;
-  PokemonStore?: any;
+  searchStore?: any;
+  pokemonStore?: any;
 }
 class App extends Component<IApp> {
   public render() {

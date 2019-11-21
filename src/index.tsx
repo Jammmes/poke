@@ -19,8 +19,8 @@ const config = {
 enableLogging(config);
 
 const stores = {
-  SearchFilterStore,
-  PokemonStore,
+  searchStore: new SearchFilterStore(),
+  pokemonStore: new PokemonStore(),
 };
 
 render(

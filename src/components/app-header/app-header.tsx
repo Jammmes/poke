@@ -5,19 +5,18 @@ import { AppHeaderView } from './app-header-view';
 import { mockPokemons } from '@/assets/mock-data';
 
 export interface IAppHeader {
-  SearchFilterStore?: any;
-  PokemonStore?: any;
+  searchStore?: any;
+  pokemonStore?: any;
 }
 
-export const AppHeader: FunctionComponent<IAppHeader> = inject('SearchFilterStore', 'PokemonStore')(
+export const AppHeader: FunctionComponent<IAppHeader> = inject('searchStore', 'pokemonStore')(
   observer((props) => {
 
-    const { SearchFilterStore, PokemonStore } = props;
-    const searchStore = new SearchFilterStore();
-    const pokemonStore = new PokemonStore();
+    const { searchStore, pokemonStore } = props;
 
     pokemonStore.setPokemons(mockPokemons);
-    // console.log('after add pokemons', pokemonStore.getAllPokemons());
+    // const pokemonsFromStore =  pokemonStore.getAllPokemons();
+    // console.log('after add pokemons', pokemonsFromStore);
 
     const handleOnChange = ({ target: { value } }: any) => {
       searchStore.changeSearchFilter(value);
@@ -25,7 +24,7 @@ export const AppHeader: FunctionComponent<IAppHeader> = inject('SearchFilterStor
 
     const handleOnSearch = () => {
       // todo: set filter by search
-      console.log(searchStore.getSearchFilter());
+      // console.log(searchStore.getSearchFilter());
     };
 
     const [...types] = pokemonStore.getUniqTags();
