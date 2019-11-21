@@ -7,6 +7,7 @@ import App from './app/app';
 
 import { SearchFilterStore } from '@/stores/searchFilterstore';
 import { PokemonStore } from '@/stores/pokemonStore';
+import { PaginationStore } from './stores/paginationStore';
 
 const config = {
   predicate: () => true,
@@ -21,6 +22,7 @@ enableLogging(config);
 const stores = {
   searchStore: new SearchFilterStore(),
   pokemonStore: new PokemonStore(),
+  paginationStore: new PaginationStore(),
 };
 
 render(
