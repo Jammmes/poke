@@ -4,3 +4,19 @@
 .root {
 
 }
+
+.loader{
+  font-size: 42px;
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  animation: blinker 1s linear infinite;
+  
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+

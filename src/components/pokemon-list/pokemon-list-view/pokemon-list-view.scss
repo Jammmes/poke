@@ -9,10 +9,16 @@
 }
 
 .list {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-background-color: $element-color;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: $element-color;
 }
 
+.summary{
+  width:100%;
+  margin-bottom: $gutter-4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

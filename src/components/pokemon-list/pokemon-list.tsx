@@ -8,13 +8,19 @@ export interface IPokemonList {
   pokemonStore?: any;
 }
 
-export const PokemonList: FunctionComponent<IPokemonList> =  inject('pokemonStore')(observer((props) => {
+export const PokemonList: FunctionComponent<IPokemonList> = inject('pokemonStore')(observer((props) => {
   const { pokemonStore } = props;
-  const { pokemons } = pokemonStore;
+  const { pokemons, isPending } = pokemonStore;
+  const types = pokemonStore.getUniqTags();
+
+  const pokemonListViewProps = {
+    pokemons,
+    types
+  }
 
   return (
     <div className={styles.root}>
-      {pokemons.length ? <PokemonListView pokemons={pokemons} /> : <div>please wait</div>}
+      {!isPending ? <PokemonListView {...pokemonListViewProps} /> : <div className={styles.loader}>Loading, please wait ...</div>}
     </div>
   );
 }));

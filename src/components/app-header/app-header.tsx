@@ -8,28 +8,18 @@ export interface IAppHeader {
   pokemonStore?: any;
 }
 
-export const AppHeader: FunctionComponent<IAppHeader> = inject('searchStore', 'pokemonStore', 'tagsFilterStore')(
+export const AppHeader: FunctionComponent<IAppHeader> = inject('searchStore', 'pokemonStore')(
   observer((props) => {
 
     const { searchStore, pokemonStore } = props;
 
-    pokemonStore.fetchPokemons();
+    pokemonStore.fetchPokemons(1, 20);
 
     const handleOnChange = ({ target: { value } }: any) => {
       searchStore.changeSearchFilter(value);
     };
 
-    const handleOnSearch = () => {
-      // todo: set filter by search
-      // console.log(searchStore.getSearchFilter());
-    };
-
-    const types = pokemonStore.uniqTags;
-
-    // todo: add filter by checked tags
     const appHeaderViewProps = {
-      types,
-      onSearch: handleOnSearch,
       onChange: handleOnChange,
     };
 
