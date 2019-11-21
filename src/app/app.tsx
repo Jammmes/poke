@@ -8,11 +8,7 @@ import { AppFooter } from '@/components/app-footer';
 import { AppHeader } from '@/components/app-header';
 import { PokemonList } from '@/components/pokemon-list';
 
-export interface IApp {
-  searchStore?: any;
-  pokemonStore?: any;
-}
-class App extends Component<IApp> {
+class App extends Component<{}> {
   public render() {
     return (
       <Layout>
