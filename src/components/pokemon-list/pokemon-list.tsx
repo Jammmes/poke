@@ -11,9 +11,10 @@ export interface IPokemonList {
 export const PokemonList: FunctionComponent<IPokemonList> =  inject('pokemonStore')(observer((props) => {
   const { pokemonStore } = props;
   const pokemons = pokemonStore.getAllPokemons();
+
   return (
     <div className={styles.root}>
-      <PokemonListView pokemons={pokemons} />
+      {pokemons.length ? <PokemonListView pokemons={pokemons} /> : <div>please wait</div>}
     </div>
   );
 }));

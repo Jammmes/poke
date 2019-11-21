@@ -1,34 +1,63 @@
 import { observable, action, computed, values, entries, get } from 'mobx';
-import { IPokemon, PokemonType } from '../api/interfaces';
+import { IPokemon, PokemonType, IPokemonAPI, INamedAPIResource } from '../api/interfaces';
 import uniq from 'lodash/uniq';
-
-export interface IpokemonStore {
-  pokemons: IPokemon[];
-  filteredPokemons: IPokemon[];
-  isPending: boolean;
-}
+import axios from 'axios';
+import { POKEMON_LIST_ENPOINT, POKEMON_FORM_FRONT_ENDPOINT } from '@/api/endpoints';
 
 export class PokemonStore {
-  @observable public store: IpokemonStore;
+  @observable public pokemons: IPokemon[];
+  @observable public filteredPokemons: IPokemon[];
+  @observable public isPending: boolean;
+  @observable public error: string;
 
   constructor() {
-    this.store = {
-      pokemons: [],
-      filteredPokemons: [],
-      isPending: false,
-    };
+    this.pokemons = [];
+    this.filteredPokemons = [];
+    this.isPending = false;
+    this.error = '';
   }
 
   @action public clearPokemons() {
-    this.store.pokemons = [];
+    this.pokemons = [];
   }
 
   @action public setPokemons(newPokemons: IPokemon[]) {
-    this.store.pokemons = [...newPokemons];
+    this.pokemons = [...newPokemons];
+  }
+
+  @action public fetchPokemons() {
+    this.setPendingOn();
+    axios.get(POKEMON_LIST_ENPOINT(0, 20))
+  .then((response) => {
+    const { data: { results } } = response;
+    const promiseArray = results.map((pokemon:INamedAPIResource) => axios.get(pokemon.url));
+    return Promise.all(promiseArray);
+  })
+  .then((pokemons: any) => {
+    const fetchedPokemons = pokemons.map((pokemon: any) => {
+      const { id, name, height, weight, base_experience, types } = pokemon.data;
+      const typeNames = types.map((extType:any) => {
+        const { type : { name } } = extType;
+        return name;
+      });
+      return {
+        id,
+        name,
+        base_experience,
+        height,
+        weight,
+        image: POKEMON_FORM_FRONT_ENDPOINT(id),
+        types:typeNames,
+      };
+    });
+    this.setPokemons(fetchedPokemons);
+  })
+  .catch((error)  => this.error = error)
+  .finally(() => this.setPendingOff);
   }
 
   @action public getAllPokemons() {
-    return this.store.pokemons.map(pokemon => {
+    return this.pokemons.map(pokemon => {
       return {
         id: get(pokemon, 'id'),
         name: get(pokemon, 'name'),
@@ -42,24 +71,24 @@ export class PokemonStore {
   }
 
   @action public getPokemonsByTag(tag: PokemonType) {
-    return this.store.pokemons.filter(pokemon => pokemon.types.filter(type => type === tag));
+    return this.pokemons.filter(pokemon => pokemon.types.filter(type => type === tag));
   }
 
   @action public getPokemonsByName(name: string) {
-    return this.store.pokemons.filter(pokemon => pokemon.name === name);
+    return this.pokemons.filter(pokemon => pokemon.name === name);
   }
 
   @action public getUniqTags() {
-    const unpreparedTypes = this.store.pokemons.map(pokemon => pokemon.types);
-    return uniq(unpreparedTypes.reduce((acc, type) => acc.concat(type)));
+    const unpreparedTypes = this.pokemons.map(pokemon => pokemon.types);
+    return unpreparedTypes.length ? uniq(unpreparedTypes.reduce((acc, type) => acc.concat(type))) : [];
   }
 
   @action public setPendingOn() {
-    this.store.isPending = true;
+    this.isPending = true;
   }
 
   @action public setPendingOff() {
-    this.store.isPending = false;
+    this.isPending = false;
   }
 
 }

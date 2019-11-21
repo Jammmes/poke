@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 import { observer, inject } from 'mobx-react';
 
 import { AppHeaderView } from './app-header-view';
-import { mockPokemons } from '@/assets/mock-data';
 
 export interface IAppHeader {
   searchStore?: any;
@@ -14,9 +13,7 @@ export const AppHeader: FunctionComponent<IAppHeader> = inject('searchStore', 'p
 
     const { searchStore, pokemonStore } = props;
 
-    pokemonStore.setPokemons(mockPokemons);
-    // const pokemonsFromStore =  pokemonStore.getAllPokemons();
-    // console.log('after add pokemons', pokemonsFromStore);
+    pokemonStore.fetchPokemons();
 
     const handleOnChange = ({ target: { value } }: any) => {
       searchStore.changeSearchFilter(value);
