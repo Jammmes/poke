@@ -6,9 +6,7 @@ const { Text } = Typography;
 import styles from './pokemon-view.scss';
 import { IPokemon } from '@/api/interfaces';
 import { Panel, Header, Content, Footer } from '@/components/panel';
-import { Tags } from '@/components/tags';
-
-
+import { ColoredTags } from '@/components/colored-tags';
 
 export const PokemonView: FunctionComponent<IPokemon> = (
   {
@@ -41,7 +39,7 @@ export const PokemonView: FunctionComponent<IPokemon> = (
         </div>
       </Content>
       <Footer>
-        <Tags tags={types} />
+        <ColoredTags tags={types} />
       </Footer>
     </Panel>
   );
