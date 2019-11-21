@@ -27,38 +27,39 @@ export class PokemonStore {
     this.pokemons = [...newPokemons];
   }
 
-  @action public fetchPokemons() {
+  @action public fetchPokemons(page: number = 1, size: number = 20) {
     this.setPendingOn();
-    axios.get(POKEMON_LIST_ENPOINT(0, 20))
-  .then((response) => {
-    const { data: { results } } = response;
-    const promiseArray = results.map((pokemon:INamedAPIResource) => axios.get(pokemon.url));
-    return Promise.all(promiseArray);
-  })
-  .then((pokemons: any) => {
-    const fetchedPokemons = pokemons.map((pokemon: any) => {
-      const { id, name, height, weight, base_experience, types } = pokemon.data;
-      const typeNames = types.map((extType:any) => {
-        const { type : { name } } = extType;
-        return name;
-      });
-      return {
-        id,
-        name,
-        base_experience,
-        height,
-        weight,
-        image: POKEMON_FORM_FRONT_ENDPOINT(id),
-        types:typeNames,
-      };
-    });
-    this.setPokemons(fetchedPokemons);
-  })
-  .catch((error)  => this.error = error)
-  .finally(() => {
-    this.setPendingOff();
-  },
-  );
+    const offset = (page - 1) * size;
+    axios.get(POKEMON_LIST_ENPOINT(offset < 0 ? 0 : offset, size))
+      .then((response) => {
+        const { data: { results } } = response;
+        const promiseArray = results.map((pokemon: INamedAPIResource) => axios.get(pokemon.url));
+        return Promise.all(promiseArray);
+      })
+      .then((pokemons: any) => {
+        const fetchedPokemons = pokemons.map((pokemon: any) => {
+          const { id, name, height, weight, base_experience, types } = pokemon.data;
+          const typeNames = types.map((extType: any) => {
+            const { type: { name } } = extType;
+            return name;
+          });
+          return {
+            id,
+            name,
+            base_experience,
+            height,
+            weight,
+            image: POKEMON_FORM_FRONT_ENDPOINT(id),
+            types: typeNames,
+          };
+        });
+        this.setPokemons(fetchedPokemons);
+      })
+      .catch((error) => this.error = error)
+      .finally(() => {
+        this.setPendingOff();
+      },
+      );
   }
 
   @action public getAllPokemons() {
@@ -86,6 +87,11 @@ export class PokemonStore {
   @action public setUniqTags() {
     const unpreparedTypes = this.pokemons.map(pokemon => pokemon.types);
     this.uniqTags = unpreparedTypes.length ? uniq(unpreparedTypes.reduce((acc, type) => acc.concat(type))) : [];
+  }
+
+  @action public getUniqTags() {
+    const unpreparedTypes = this.pokemons.map(pokemon => pokemon.types);
+    return unpreparedTypes.length ? uniq(unpreparedTypes.reduce((acc, type) => acc.concat(type))) : [];
   }
 
   @action public setPendingOn() {
