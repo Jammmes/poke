@@ -7,9 +7,8 @@ import 'antd/lib/page-header/style/css';
 import styles from './app-header-view.scss';
 
 import { Panel, Content } from '@/components/panel';
-import { Tags } from '@/components/tags';
 import { PokemonType } from '@/api/interfaces';
-
+import { CheckableTags } from '../checkable-tags';
 
 export interface IAppHeaderViewProps {
   types: PokemonType[];
@@ -19,7 +18,7 @@ export interface IAppHeaderViewProps {
 export const AppHeaderView: FunctionComponent<IAppHeaderViewProps> = (
   { types,
     onSearch,
-    onChange
+    onChange,
   }) => {
   return (
     <div className={styles.root}>
@@ -27,7 +26,7 @@ export const AppHeaderView: FunctionComponent<IAppHeaderViewProps> = (
         <Search placeholder="input pokemon name" onChange={onChange} onSearch={onSearch} enterButton />
       </PageHeader>
       <Panel className={styles.summary}>
-        <Tags tags={types} />
+        <CheckableTags tags={types} />
       </Panel>
     </div>
   );

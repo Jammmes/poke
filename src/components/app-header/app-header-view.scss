@@ -1,15 +1,18 @@
 @import '../../styles.scss';
 
 .root{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 
 .summary{
-    width:100%;
-    margin-bottom: $gutter-4;
+  width:100%;
+  margin-bottom: $gutter-4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
