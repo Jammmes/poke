@@ -9,37 +9,42 @@ import { POKEMONS_COUNT } from '@/constants/app';
 
 export interface IAppFooter {
   paginationStore?: any;
+  pokemonStore?: any;
 }
 
-export const AppFooter: FunctionComponent<IAppFooter> = inject('paginationStore')(
+export const AppFooter: FunctionComponent<IAppFooter> = inject('paginationStore', 'pokemonStore')(
   observer((props) => {
 
-    const { paginationStore } = props;
-    const handleOnShowSizeChange = (size: number) => {
-      paginationStore.setSize(size);
+    const { paginationStore, pokemonStore } = props;
+    const { page, size } = paginationStore;
+
+    const handleOnShowSizeChange = (current: number, newSize: number) => {
+      paginationStore.setSize(newSize);
+      pokemonStore.fetchPokemons(page, newSize);
     };
 
-    const handleOnPageChange = (page: number) => {
-      paginationStore.setPage(page);
+    const handleOnPageChange = (newPage: number) => {
+      paginationStore.setPage(newPage);
+      pokemonStore.fetchPokemons(newPage, size);
     };
 
     return (
-  <footer className={styles.root}>
-    <div className={styles.header}>
-    <Panel>
-      <Content fullwidth>
-      <Pagination
-        onChange={handleOnPageChange}
-        showSizeChanger
-        onShowSizeChange={handleOnShowSizeChange}
-        defaultCurrent={1}
-        total={POKEMONS_COUNT}
-      />
-      </Content>
-    </Panel>
-    </div>
-    <div className={styles.footer}>pokemon list 2019</div>
-   </footer>
+      <footer className={styles.root}>
+        <div className={styles.header}>
+          <Panel>
+            <Content fullwidth>
+              <Pagination
+                onChange={handleOnPageChange}
+                showSizeChanger
+                onShowSizeChange={handleOnShowSizeChange}
+                defaultCurrent={1}
+                total={POKEMONS_COUNT}
+              />
+            </Content>
+          </Panel>
+        </div>
+        <div className={styles.footer}>pokedex 2019</div>
+      </footer>
     );
   },
-));
+  ));
