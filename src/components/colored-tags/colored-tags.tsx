@@ -5,7 +5,7 @@ import 'antd/lib/tag/style/css';
 import styles from './colored-tags.scss';
 
 import { PokemonType } from '@/api/interfaces';
-import { getTypeColor } from '@/utils/tags';
+import { getTypeColor } from './entity';
 
 export interface IColoredTagsProps {
   tags: PokemonType[];
