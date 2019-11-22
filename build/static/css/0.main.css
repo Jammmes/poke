@@ -1,0 +1,36 @@
+.content_root_3_0hy{color:#000;-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;margin:0 100px}@media all and (min-width: 576px) and (max-width: 767px){.content_root_3_0hy{margin:0 24px}}@media all and (max-width: 575px){.content_root_3_0hy{margin:0 12px}}
+
+.header_root_3llYM{color:#000;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto;margin:0 100px}@media all and (min-width: 576px) and (max-width: 767px){.header_root_3llYM{margin:0 24px}}@media all and (max-width: 575px){.header_root_3llYM{margin:0 12px}}
+
+.footer_root_3wwho{-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto}
+
+.layout_root_5suHm{min-height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+
+body{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box}
+
+.app-footer_root_1efuJ{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.app-footer_header_9upf5{display:block;text-align:center;margin-bottom:8px}.app-footer_footer_1zfPX{height:20px;background:gray;color:wheat;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%}
+
+.panel_root_2lEaI{border-radius:8px;border:1px solid rgba(0,0,0,0.05);-webkit-box-shadow:0 1px 3px 0 rgba(0,0,0,0.05);box-shadow:0 1px 3px 0 rgba(0,0,0,0.05);min-height:24px;display:block;background-color:#fff}
+
+.header_root_3CvwE{display:-webkit-box;display:-ms-flexbox;display:flex;padding:8px 10px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;font-size:20px;font-weight:600;border-bottom:1px solid rgba(0,0,0,0.05);color:#000}.header_fullWidth_x_hVg{padding:8px 0}
+
+.content_root_22Rw1{padding:10px}.content_fullWidth_AGr7V{padding:10px 0}
+
+.footer_root_2tRXj{padding:8px 10px;border-top:1px solid rgba(0,0,0,0.05)}.footer_fullWidth_Y72M8{padding:8px 0}
+
+.app-header-view_root_3s5vH{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+
+.pokemon-list_loader_3feQh{font-size:42px;position:absolute;top:45%;left:35%;-webkit-animation:pokemon-list_blinker_9vVAg 1s linear infinite;animation:pokemon-list_blinker_9vVAg 1s linear infinite}@media all and (min-width: 576px) and (max-width: 767px){.pokemon-list_loader_3feQh{font-size:24px}}@media all and (max-width: 575px){.pokemon-list_loader_3feQh{font-size:18px;left:25%}}@-webkit-keyframes pokemon-list_blinker_9vVAg{50%{opacity:0}}@keyframes pokemon-list_blinker_9vVAg{50%{opacity:0}}
+
+.pokemon-list-view_root_2t0jy{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch}.pokemon-list-view_list_YWzWo{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:distribute;justify-content:space-around;background-color:rgba(0,0,0,0.05)}.pokemon-list-view_summary_1vwoV{width:100%;margin-bottom:4px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+
+.pokemon_root_3q192{margin:10px}
+
+.pokemon-view_root_rbGKN{width:250px}.pokemon-view_root_rbGKN:hover{cursor:pointer}.pokemon-view_title_CkFlt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pokemon-view_content_2eC_W{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.pokemon-view_info_3aZDT{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}.pokemon-view_image_2LW6M{display:block;border:1px solid rgba(0,0,0,0.05);border-radius:8px;height:100px;width:100px;margin-bottom:10px;text-align:center}
+
+.colored-tags_tags_3RgnY span{margin:4px}
+
+.checkable-tags_root_1EX0i{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:0 8px}
+
+
+/*# sourceMappingURL=0.main.css.map*/
