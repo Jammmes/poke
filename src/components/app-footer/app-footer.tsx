@@ -4,17 +4,16 @@ import { Pagination } from 'antd';
 import 'antd/lib/pagination/style/css';
 
 import styles from './app-footer.scss';
-import { Panel, Content } from '../panel';
+import { Panel, Content } from '@/components/panel';
 import { POKEMONS_COUNT } from '@/constants/app';
 
 export interface IAppFooter {
-  rootStore? :any;
+  rootStore?: any;
 }
 
 export const AppFooter: FunctionComponent<IAppFooter> = inject('rootStore')(
-  observer((props) => {
+  observer(({ rootStore }) => {
 
-    const { rootStore } = props;
     const { paginationStore, pokemonStore } = rootStore;
     const { page, size } = paginationStore;
 

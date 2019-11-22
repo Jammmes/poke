@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useState, useCallback } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tag as TagAnt } from 'antd';
 import 'antd/lib/tag/style/css';
-const { CheckableTag : CheckableTagAnt } = TagAnt;
+const { CheckableTag: CheckableTagAnt } = TagAnt;
 
 import { PokemonType } from '@/api/interfaces';
 
@@ -20,12 +20,12 @@ export const CheckableTag: FunctionComponent<ICheckableTagProps> = inject('rootS
     const handleChange = () => {
       toggleCheck(!isChecked);
       !isChecked
-      ? tagsStore.addTagToFilter(children)
-      : tagsStore.removeTagFromFilter(children);
+        ? tagsStore.addTagToFilter(children)
+        : tagsStore.removeTagFromFilter(children);
     };
 
     return (
-        <CheckableTagAnt checked={isChecked} onChange={handleChange}>{children}</CheckableTagAnt>
+      <CheckableTagAnt checked={isChecked} onChange={handleChange}>{children}</CheckableTagAnt>
     );
   }))
-;
+  ;

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
 import styles from './pokemon-list-view.scss';
-
 import { Panel } from '@/components/panel';
 import { Pokemon } from '@/components/pokemon/pokemon';
 import { IPokemon, PokemonType } from '@/api/interfaces';

@@ -1,4 +1,3 @@
-import { observable, action, autorun, computed } from 'mobx';
 import { PaginationStore } from './paginationStore';
 import { PokemonStore } from './pokemonStore';
 import { TagsFilterStore } from './tagsFilterStore';

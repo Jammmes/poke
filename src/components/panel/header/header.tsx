@@ -10,6 +10,6 @@ export const Header: FunctionComponent<IPanelSection> = ({
   className = '',
 }) => {
   return (
-<header className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</header>
+    <header className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</header>
   );
 };

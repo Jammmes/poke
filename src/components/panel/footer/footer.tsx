@@ -10,6 +10,6 @@ export const Footer: FunctionComponent<IPanelSection> = ({
   className = '',
 }) => {
   return (
-<footer className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</footer>
+    <footer className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</footer>
   );
 };

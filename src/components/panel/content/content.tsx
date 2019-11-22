@@ -10,6 +10,6 @@ export const Content: FunctionComponent<IPanelSection> = ({
   className = '',
 }) => {
   return (
-<div className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</div>
+    <div className={cn(styles.root, { [styles.fullwidth]: fullwidth }, className)}>{children}</div>
   );
 };

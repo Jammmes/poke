@@ -3,7 +3,6 @@ import { Tag } from 'antd';
 import 'antd/lib/tag/style/css';
 
 import styles from './colored-tags.scss';
-
 import { PokemonType } from '@/api/interfaces';
 import { getTypeColor } from './entity';
 

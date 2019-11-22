@@ -5,11 +5,11 @@ import styles from './pokemon-list.scss';
 import { PokemonListView } from './pokemon-list-view/pokemon-list-view';
 
 export interface IPokemonList {
-  rootStore?:any;
+  rootStore?: any;
 }
 
-export const PokemonList: FunctionComponent<IPokemonList> = inject('rootStore')(observer((props) => {
-  const { rootStore } = props;
+export const PokemonList: FunctionComponent<IPokemonList> = inject('rootStore')(observer(({ rootStore }) => {
+
   const { pokemonStore } = rootStore;
   const { filteredPokemons, isPending, error } = pokemonStore;
   const types = pokemonStore.getUniqTags();
@@ -20,11 +20,11 @@ export const PokemonList: FunctionComponent<IPokemonList> = inject('rootStore')(
   };
 
   return (
-    <div className={styles.root}>
+    <div>
       {error}
       {!isPending
-      ? <PokemonListView {...pokemonListViewProps} />
-      : <div className={styles.loader}>Loading, please wait ...</div>}
+        ? <PokemonListView {...pokemonListViewProps} />
+        : <div className={styles.loader}>Loading, please wait ...</div>}
     </div>
   );
 }));

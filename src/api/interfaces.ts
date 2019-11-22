@@ -28,6 +28,11 @@ export interface IPokemonAPI {
   types: IPokemonType[];
 }
 
+export interface ITypesAPI {
+  slot: number;
+  type: INamedAPIResource;
+}
+
 export interface IPokemon {
   id: number;
   name: string;

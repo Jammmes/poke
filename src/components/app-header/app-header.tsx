@@ -8,22 +8,17 @@ export interface IAppHeader {
 }
 
 export const AppHeader: FunctionComponent<IAppHeader> = inject('rootStore')(
-observer((props) => {
+  observer(({ rootStore }) => {
 
-  const { rootStore } = props;
-  const { pokemonStore, searchStore } = rootStore;
+    const { pokemonStore, searchStore } = rootStore;
 
-  pokemonStore.fetchPokemons(1, 10);
+    pokemonStore.fetchPokemons(1, 10);
 
-  const handleOnChange = ({ target: { value } }: any) => {
-    searchStore.changeSearchFilter(value);
-  };
+    const handleOnChange = ({ target: { value } }: any) => {
+      searchStore.changeSearchFilter(value);
+    };
 
-  const appHeaderViewProps = {
-    onChange: handleOnChange,
-  };
-
-  return (
-    <AppHeaderView {...appHeaderViewProps} />
-  );
-}));
+    return (
+      <AppHeaderView onChange={handleOnChange} />
+    );
+  }));

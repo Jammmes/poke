@@ -1,5 +1,5 @@
 import { observable, action, get, autorun } from 'mobx';
-import { IPokemon, PokemonType, INamedAPIResource } from '../api/interfaces';
+import { IPokemon, INamedAPIResource, ITypesAPI } from '../api/interfaces';
 import uniq from 'lodash/uniq';
 import intersection from 'lodash/intersection';
 import axios from 'axios';
@@ -19,10 +19,10 @@ export class PokemonStore {
     this.error = '';
     autorun(() => {
       const searchFilter = root.searchStore.filter;
-      const tagsFilter = root.tagsStore.filter.map(f => f);
+      const tagsFilter = root.tagsStore.filter.map(tag => tag);
       const filteredPokemons = this.getAllPokemons()
-      .filter(pokemon => tagsFilter.length ?  intersection(pokemon.types.map(type => type), tagsFilter).length : true)
-      .filter(pokemon => pokemon.name.includes(searchFilter));
+        .filter(pokemon => tagsFilter.length ? intersection(pokemon.types.map(type => type), tagsFilter).length : true)
+        .filter(pokemon => pokemon.name.includes(searchFilter));
       this.setFilteredPokemons(filteredPokemons);
     });
   }
@@ -31,28 +31,26 @@ export class PokemonStore {
     this.filteredPokemons = [...pokemons];
   }
 
-  @action public clearPokemons() {
-    this.pokemons = [];
-  }
-
   @action public setPokemons(newPokemons: IPokemon[]) {
     this.pokemons = [...newPokemons];
   }
 
   @action public fetchPokemons(page: number = 1, size: number = 10) {
+
     this.setPendingOn();
     const offset = (page - 1) * size;
+
     axios.get(POKEMON_LIST_ENPOINT(offset < 0 ? 0 : offset, size))
       .then((response) => {
         const { data: { results } } = response;
         const promiseArray = results.map((pokemon: INamedAPIResource) => axios.get(pokemon.url));
         return Promise.all(promiseArray);
       })
-      .then((pokemons: any) => {
+      .then((pokemons: any[]) => {
         const fetchedPokemons = pokemons.map((pokemon: any) => {
           const { id, name, height, weight, base_experience, types } = pokemon.data;
-          const typeNames = types.map((extType: any) => {
-            const { type: { name } } = extType;
+          const typeNames = types.map((typeAPI: ITypesAPI) => {
+            const { type: { name } } = typeAPI;
             return name;
           });
           return {
@@ -87,14 +85,6 @@ export class PokemonStore {
         types: pokemon.types.map(type => type),
       };
     });
-  }
-
-  @action public getPokemonsByTag(tag: PokemonType) {
-    return this.pokemons.filter(pokemon => pokemon.types.filter(type => type === tag));
-  }
-
-  @action public getPokemonsByName(name: string) {
-    return this.pokemons.filter(pokemon => pokemon.name === name);
   }
 
   @action public getUniqTags() {

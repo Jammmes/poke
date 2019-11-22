@@ -6,10 +6,6 @@ export class SearchFilterStore {
 
   constructor(public root: RootStore) { }
 
-  @action public clearSearchFilter() {
-    this.filter = '';
-  }
-
   @action public changeSearchFilter(newFilter: string) {
     this.filter = newFilter;
   }
