@@ -1,6 +1,7 @@
-import { observable, action, computed, get, autorun } from 'mobx';
+import { observable, action, get, autorun } from 'mobx';
 import { IPokemon, PokemonType, INamedAPIResource } from '../api/interfaces';
 import uniq from 'lodash/uniq';
+import intersection from 'lodash/intersection';
 import axios from 'axios';
 import { POKEMON_LIST_ENPOINT, POKEMON_FORM_FRONT_ENDPOINT } from '@/api/endpoints';
 import { RootStore } from './rootStore';
@@ -17,14 +18,17 @@ export class PokemonStore {
     this.isPending = false;
     this.error = '';
     autorun(() => {
-      // tslint:disable-next-line: no-console
-      console.log('Pokemon sees search in changed', root.searchStore.filter);
-      // tslint:disable-next-line: no-console
-      console.log('Pokemon sees tags filter in changed', root.tagsStore.filter.map(f => f));
-      const f = this.getAllPokemons().filter(pokemon => pokemon.name.includes(root.searchStore.filter));
-      // tslint:disable-next-line: no-console
-      console.log('filtered', f);
+      const searchFilter = root.searchStore.filter;
+      const tagsFilter = root.tagsStore.filter.map(f => f);
+      const filteredPokemons = this.getAllPokemons()
+      .filter(pokemon => tagsFilter.length ?  intersection(pokemon.types.map(type => type), tagsFilter).length : true)
+      .filter(pokemon => pokemon.name.includes(searchFilter));
+      this.setFilteredPokemons(filteredPokemons);
     });
+  }
+
+  @action public setFilteredPokemons(pokemons: IPokemon[]) {
+    this.filteredPokemons = [...pokemons];
   }
 
   @action public clearPokemons() {
@@ -35,7 +39,7 @@ export class PokemonStore {
     this.pokemons = [...newPokemons];
   }
 
-  @action public fetchPokemons(page: number = 1, size: number = 20) {
+  @action public fetchPokemons(page: number = 1, size: number = 10) {
     this.setPendingOn();
     const offset = (page - 1) * size;
     axios.get(POKEMON_LIST_ENPOINT(offset < 0 ? 0 : offset, size))
@@ -62,6 +66,7 @@ export class PokemonStore {
           };
         });
         this.setPokemons(fetchedPokemons);
+        this.setFilteredPokemons(fetchedPokemons);
       })
       .catch((error) => this.error = error)
       .finally(() => {

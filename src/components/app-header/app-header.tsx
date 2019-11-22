@@ -13,7 +13,7 @@ observer((props) => {
   const { rootStore } = props;
   const { pokemonStore, searchStore } = rootStore;
 
-  pokemonStore.fetchPokemons(1, 20);
+  pokemonStore.fetchPokemons(1, 10);
 
   const handleOnChange = ({ target: { value } }: any) => {
     searchStore.changeSearchFilter(value);

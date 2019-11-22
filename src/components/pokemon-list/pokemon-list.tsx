@@ -11,11 +11,11 @@ export interface IPokemonList {
 export const PokemonList: FunctionComponent<IPokemonList> = inject('rootStore')(observer((props) => {
   const { rootStore } = props;
   const { pokemonStore } = rootStore;
-  const { pokemons, isPending, error } = pokemonStore;
+  const { filteredPokemons, isPending, error } = pokemonStore;
   const types = pokemonStore.getUniqTags();
 
   const pokemonListViewProps = {
-    pokemons,
+    pokemons: filteredPokemons,
     types,
   };
 
