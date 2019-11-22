@@ -1,5 +1,8 @@
 @import '../../styles.scss';
 
 .root {
-    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 $gutter-8;
 }

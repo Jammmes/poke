@@ -39,6 +39,7 @@ export const AppFooter: FunctionComponent<IAppFooter> = inject('rootStore')(
                 onShowSizeChange={handleOnShowSizeChange}
                 defaultCurrent={1}
                 total={POKEMONS_COUNT}
+                pageSizeOptions={['10', '20', '50']}
               />
             </Content>
           </Panel>

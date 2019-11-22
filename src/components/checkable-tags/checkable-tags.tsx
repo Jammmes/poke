@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import styles from './checkable-tags.scss';
+
 import { PokemonType } from '@/api/interfaces';
 import { CheckableTag } from './checkable-tag';
 
