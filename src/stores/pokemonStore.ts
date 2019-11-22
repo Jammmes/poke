@@ -19,6 +19,11 @@ export class PokemonStore {
     autorun(() => {
       // tslint:disable-next-line: no-console
       console.log('Pokemon sees search in changed', root.searchStore.filter);
+      // tslint:disable-next-line: no-console
+      console.log('Pokemon sees tags filter in changed', root.tagsStore.filter.map(f => f));
+      const f = this.getAllPokemons().filter(pokemon => pokemon.name.includes(root.searchStore.filter));
+      // tslint:disable-next-line: no-console
+      console.log('filtered', f);
     });
   }
 

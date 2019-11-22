@@ -11,6 +11,6 @@ export class TagsFilterStore {
   }
 
   @action public removeTagFromFilter(tag: string) {
-    return this.filter.filter(item => item === tag);
+    this.filter = this.filter.filter(item => item !== tag);
   }
 }

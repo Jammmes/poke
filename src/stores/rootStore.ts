@@ -12,8 +12,8 @@ export class RootStore {
 
   constructor() {
     this.searchStore = new SearchFilterStore(this);
+    this.tagsStore = new TagsFilterStore(this);
     this.paginationStore = new PaginationStore(this);
     this.pokemonStore = new PokemonStore(this);
-    this.tagsStore = new TagsFilterStore(this);
   }
 }
