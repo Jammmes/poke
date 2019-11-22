@@ -8,14 +8,14 @@ import { Panel, Content } from '../panel';
 import { POKEMONS_COUNT } from '@/constants/app';
 
 export interface IAppFooter {
-  paginationStore?: any;
-  pokemonStore?: any;
+  rootStore? :any;
 }
 
-export const AppFooter: FunctionComponent<IAppFooter> = inject('paginationStore', 'pokemonStore')(
+export const AppFooter: FunctionComponent<IAppFooter> = inject('rootStore')(
   observer((props) => {
 
-    const { paginationStore, pokemonStore } = props;
+    const { rootStore } = props;
+    const { paginationStore, pokemonStore } = rootStore;
     const { page, size } = paginationStore;
 
     const handleOnShowSizeChange = (current: number, newSize: number) => {

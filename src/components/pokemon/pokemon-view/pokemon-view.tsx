@@ -24,7 +24,7 @@ export const PokemonView: FunctionComponent<IPokemon> = (
         <div title={name} className={styles.title}>{name}</div>
       </Header>
       <Content className={styles.content}>
-        <img className={styles.image} src={image} alt='...' />
+        <img className={styles.image} src={image} alt='Image not found' />
         <div className={styles.info}>
           <Text strong>Expirience: </Text>
           <Text code>{base_experience}</Text>

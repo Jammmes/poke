@@ -1,22 +1,25 @@
-import { observable, action, computed, values, entries, get } from 'mobx';
+import { observable, action, computed, get, autorun } from 'mobx';
 import { IPokemon, PokemonType, INamedAPIResource } from '../api/interfaces';
 import uniq from 'lodash/uniq';
 import axios from 'axios';
 import { POKEMON_LIST_ENPOINT, POKEMON_FORM_FRONT_ENDPOINT } from '@/api/endpoints';
+import { RootStore } from './rootStore';
 
 export class PokemonStore {
   @observable public pokemons: IPokemon[];
   @observable public filteredPokemons: IPokemon[];
   @observable public isPending: boolean;
   @observable public error: string;
-  @observable public uniqTags: PokemonType[];
 
-  constructor() {
+  constructor(root: RootStore) {
     this.pokemons = [];
     this.filteredPokemons = [];
     this.isPending = false;
     this.error = '';
-    this.uniqTags = [];
+    autorun(() => {
+      // tslint:disable-next-line: no-console
+      console.log('Pokemon sees search in changed', root.searchStore.filter);
+    });
   }
 
   @action public clearPokemons() {
@@ -82,11 +85,6 @@ export class PokemonStore {
 
   @action public getPokemonsByName(name: string) {
     return this.pokemons.filter(pokemon => pokemon.name === name);
-  }
-
-  @action public setUniqTags() {
-    const unpreparedTypes = this.pokemons.map(pokemon => pokemon.types);
-    this.uniqTags = unpreparedTypes.length ? uniq(unpreparedTypes.reduce((acc, type) => acc.concat(type))) : [];
   }
 
   @action public getUniqTags() {

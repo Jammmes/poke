@@ -4,26 +4,26 @@ import { observer, inject } from 'mobx-react';
 import { AppHeaderView } from './app-header-view';
 
 export interface IAppHeader {
-  searchStore?: any;
-  pokemonStore?: any;
+  rootStore?: any;
 }
 
-export const AppHeader: FunctionComponent<IAppHeader> = inject('searchStore', 'pokemonStore')(
-  observer((props) => {
+export const AppHeader: FunctionComponent<IAppHeader> = inject('rootStore')(
+observer((props) => {
 
-    const { searchStore, pokemonStore } = props;
+  const { rootStore } = props;
+  const { pokemonStore, searchStore } = rootStore;
 
-    pokemonStore.fetchPokemons(1, 20);
+  pokemonStore.fetchPokemons(1, 20);
 
-    const handleOnChange = ({ target: { value } }: any) => {
-      searchStore.changeSearchFilter(value);
-    };
+  const handleOnChange = ({ target: { value } }: any) => {
+    searchStore.changeSearchFilter(value);
+  };
 
-    const appHeaderViewProps = {
-      onChange: handleOnChange,
-    };
+  const appHeaderViewProps = {
+    onChange: handleOnChange,
+  };
 
-    return (
-      <AppHeaderView {...appHeaderViewProps} />
-    );
-  }));
+  return (
+    <AppHeaderView {...appHeaderViewProps} />
+  );
+}));
