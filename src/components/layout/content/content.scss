@@ -4,4 +4,10 @@
   color:$text-color;
   flex: 1 1 auto;
   margin: 0  $gutter-100;
+  @include respondTo(wide-phones) {
+    margin: 0  $gutter-24;
+  }
+  @include respondTo(phones) {
+    margin: 0  $gutter-12;
+  }
 }
